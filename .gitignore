@@ -1,5 +1,4 @@
 .DS_Store
 target/
-lib_managed/
-boot/
-src_managed/
+.idea/
+time.iml
