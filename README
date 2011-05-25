@@ -2,7 +2,7 @@ A Scala wrapper for Joda Time
 
 USAGE:
 
-  import org.scala_tools.time.Imports._
+  import com.thenewmotion.time.Imports._
 
   DateTime.now
 	// returns org.joda.time.DateTime = 2009-04-27T13:25:42.659-07:00
@@ -24,7 +24,7 @@ USAGE:
 	// returns Long = 1000
 	
 	2.hours + 45.minutes + 10.seconds
-	// returns org.scala_tools.time.DurationBuilder
+	// returns com.thenewmotion.time.DurationBuilder
 	// (can be used as a Duration or as a Period)
 	
 	(2.hours + 45.minutes + 10.seconds).millis

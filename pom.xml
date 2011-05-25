@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.scala-tools</groupId>
+    <groupId>com.thenewmotion</groupId>
     <artifactId>time</artifactId>
     <packaging>jar</packaging>
     <name>Scala-Time</name>
-    <version>${scala.version}-0.2-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <url>https://github.com/thenewmotion/scala-time</url>
-    <inceptionYear>2009</inceptionYear>
+    <inceptionYear>2011</inceptionYear>
     <description>A Scala wrapper for Joda Time</description>
     <licenses>
         <license>
@@ -17,14 +17,10 @@
         </license>
     </licenses>
 
-    <developers>
-        <developer>
-            <id>jorge.ortiz</id>
-            <name>Jorge Ortiz</name>
-            <timezone>-8</timezone>
-            <email>jorge.ortiz@gmail.com</email>
-        </developer>
-    </developers>
+    <organization>
+        <name>The New Motion</name>
+        <url>http://www.thenewmotion.com/</url>
+    </organization>
 
     <scm>
         <url>https://github.com/thenewmotion/scala-time</url>
@@ -45,7 +41,6 @@
 
     <properties>
         <scala.version>2.8.1</scala.version>
-        <lift.version>2.3</lift.version>
         <encoding>UTF-8</encoding>
     </properties>
 
