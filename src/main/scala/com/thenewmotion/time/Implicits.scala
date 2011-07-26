@@ -17,11 +17,12 @@ package com.thenewmotion.time
  * limitations under the License. 
  *
  **/
-import org.joda.time._
 import org.joda.time.base.{AbstractDateTime, AbstractInstant, AbstractPartial}
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.field.AbstractReadableInstantFieldProperty
 import java.util.Date
+import java.sql.Timestamp
+import org.joda.time._
 
 object Implicits extends Implicits
 
@@ -33,7 +34,9 @@ object JodaImplicits extends JodaImplicits
 
 object JavaImplicits extends JavaImplicits
 
-trait Implicits extends BuilderImplicits with IntImplicits with JodaImplicits with JavaImplicits
+object SqlImplicits extends SqlImplicits
+
+trait Implicits extends BuilderImplicits with IntImplicits with JodaImplicits with JavaImplicits with SqlImplicits
 
 trait BuilderImplicits {
   implicit def forcePeriod(builder: DurationBuilder): Period =
@@ -114,4 +117,11 @@ trait JavaImplicits {
   implicit def date2DateTime(d: Date): DateTime = new DateTime(d)
 
   implicit def dateTime2Date(dt: DateTime): Date = dt.toDate
+}
+
+trait SqlImplicits {
+
+  implicit def dateTime2Timestamp(d: DateTime): Timestamp = new Timestamp(d.toDate.getTime)
+
+  implicit def timestamp2dateTime(t: Timestamp): DateTime = new DateTime(t)
 }
