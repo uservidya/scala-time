@@ -4,7 +4,7 @@
     <artifactId>time</artifactId>
     <packaging>jar</packaging>
     <name>Scala-Time</name>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <url>https://github.com/thenewmotion/scala-time</url>
     <inceptionYear>2011</inceptionYear>
     <description>A Scala wrapper for Joda Time</description>
@@ -79,6 +79,7 @@
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
                 <executions>
                     <execution>
                         <goals>
