@@ -1,13 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.thenewmotion</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.2</version>
+    </parent>
+
     <groupId>com.thenewmotion</groupId>
-    <artifactId>time</artifactId>
-    <packaging>jar</packaging>
-    <name>Scala-Time</name>
+    <artifactId>time_${scala.version}</artifactId>
     <version>1.3-SNAPSHOT</version>
+
+    <name>Scala-Time</name>
+    <description>A Scala wrapper for Joda Time</description>
     <url>https://github.com/thenewmotion/scala-time</url>
     <inceptionYear>2011</inceptionYear>
-    <description>A Scala wrapper for Joda Time</description>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -16,38 +25,20 @@
         </license>
     </licenses>
 
-    <organization>
-        <name>The New Motion</name>
-        <url>http://www.thenewmotion.com/</url>
-    </organization>
-
     <scm>
         <url>https://github.com/thenewmotion/scala-time</url>
         <connection>scm:git:ssh://git@github.com/thenewmotion/scala-time.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/thenewmotion/scala-time.git</developerConnection>
     </scm>
 
-    <distributionManagement>
-        <repository>
-            <id>thenewmotion-nexus</id>
-            <url>http://build.thenewmotion.com/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>thenewmotion-nexus</id>
-            <url>http://build.thenewmotion.com/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <properties>
-        <scala.version>2.9.0-1</scala.version>
-        <encoding>UTF-8</encoding>
+        <scala.version>2.9.1</scala.version>
     </properties>
 
     <repositories>
         <repository>
-            <id>scala-tools.org</id>
-            <name>Scala-Tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
+            <id>typesafe</id>
+            <url>http://repo.typesafe.com/typesafe/releases/</url>
         </repository>
     </repositories>
 
