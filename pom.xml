@@ -40,6 +40,10 @@
             <id>typesafe</id>
             <url>http://repo.typesafe.com/typesafe/releases/</url>
         </repository>
+        <repository>
+            <id>thenewmotion-nexus</id>
+            <url>http://build.thenewmotion.com/nexus/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
