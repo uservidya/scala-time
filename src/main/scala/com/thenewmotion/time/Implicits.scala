@@ -17,6 +17,7 @@ package com.thenewmotion.time
  * limitations under the License. 
  *
  **/
+
 import org.joda.time.base.{AbstractDateTime, AbstractInstant, AbstractPartial}
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.field.AbstractReadableInstantFieldProperty
@@ -36,7 +37,8 @@ object JavaImplicits extends JavaImplicits
 
 object SqlImplicits extends SqlImplicits
 
-trait Implicits extends BuilderImplicits with IntImplicits with JodaImplicits with JavaImplicits with SqlImplicits
+trait Implicits extends BuilderImplicits with IntImplicits with JodaImplicits with JavaImplicits
+with SqlImplicits with TupleImplicits
 
 trait BuilderImplicits {
   implicit def forcePeriod(builder: DurationBuilder): Period =
@@ -111,6 +113,7 @@ trait JodaImplicits {
   implicit object DateTimeOrdering extends Ordering[DateTime] {
     def compare(x: DateTime, y: DateTime) = x compare y
   }
+
 }
 
 trait JavaImplicits {
@@ -124,4 +127,39 @@ trait SqlImplicits {
   implicit def dateTime2Timestamp(d: DateTime): Timestamp = new Timestamp(d.toDate.getTime)
 
   implicit def timestamp2dateTime(t: Timestamp): DateTime = new DateTime(t)
+}
+
+trait TupleImplicits {
+  type Year = Int
+  type Month = Int
+  type Day = Int
+  type Hour = Int
+  type Minute = Int
+  type Second = Int
+  type Millis = Int
+
+  implicit def tuple2Time(t: (Year, Month, Day)): DateTime = {
+    val (year, month, day) = t
+    new DateTime(year, month, day, 0, 0, 0, 0)
+  }
+
+  implicit def tuple2Time(t: (Year, Month, Day, Hour)): DateTime = {
+    val (year, month, day, hour) = t
+    new DateTime(year, month, day, hour, 0, 0, 0)
+  }
+
+  implicit def tuple2Time(t: (Year, Month, Day, Hour, Minute)): DateTime = {
+    val (year, month, day, hour, minute) = t
+    new DateTime(year, month, day, hour, minute, 0, 0)
+  }
+
+  implicit def tuple2Time(t: (Year, Month, Day, Hour, Minute, Second)): DateTime = {
+    val (year, month, day, hour, minute, second) = t
+    new DateTime(year, month, day, hour, minute, second, 0)
+  }
+
+  implicit def tuple2Time(t: (Year, Month, Day, Hour, Minute, Second, Millis)): DateTime = {
+    val (year, month, day, hour, minute, second, millis) = t
+    new DateTime(year, month, day, hour, minute, second, millis)
+  }
 }
