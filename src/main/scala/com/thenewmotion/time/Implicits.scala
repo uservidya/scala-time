@@ -18,12 +18,12 @@ package com.thenewmotion.time
  *
  **/
 
-import org.joda.time.base.{AbstractDateTime, AbstractInstant, AbstractPartial}
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.field.AbstractReadableInstantFieldProperty
 import java.util.Date
 import java.sql.Timestamp
 import org.joda.time._
+import base.{BaseDateTime, AbstractDateTime, AbstractInstant, AbstractPartial}
 
 object Implicits extends Implicits
 
@@ -124,9 +124,13 @@ trait JavaImplicits {
 
 trait SqlImplicits {
 
-  implicit def dateTime2Timestamp(d: DateTime): Timestamp = new Timestamp(d.toDate.getTime)
+  implicit def dateTime2Timestamp(d: BaseDateTime): Timestamp = new Timestamp(d.toDate.getTime)
 
   implicit def timestamp2dateTime(t: Timestamp): DateTime = new DateTime(t)
+
+  implicit def with2Timestamp(d: BaseDateTime) = new {
+    def toTimestamp: Timestamp = dateTime2Timestamp(d)
+  }
 }
 
 trait TupleImplicits {
