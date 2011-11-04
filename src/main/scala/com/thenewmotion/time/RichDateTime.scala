@@ -80,4 +80,14 @@ class RichDateTime(val underlying: DateTime) extends Ordered[RichDateTime] {
   def withEra(era: Int) = underlying.withEra(era)
 
   def compare(that: RichDateTime) = underlying.compareTo(that.underlying)
+
+  def monthInterval: Interval = {
+    val start = withDay(1).toDateMidnight
+    new Interval(start, start.plusMonths(1))
+  }
+
+  def dayInterval: Interval = {
+    val start = new DateMidnight(underlying.getMillis(), underlying.getChronology())
+    new Interval(start, start.plusDays(1))
+  }
 }
