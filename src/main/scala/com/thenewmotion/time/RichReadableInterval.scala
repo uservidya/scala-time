@@ -17,6 +17,7 @@ package com.thenewmotion.time
  *
  **/
 import org.joda.time._
+import scala.annotation.tailrec
 
 class RichReadableInterval(underlying: ReadableInterval) {
   def chronology: Chronology =
@@ -32,4 +33,15 @@ class RichReadableInterval(underlying: ReadableInterval) {
     underlying.toDuration.getMillis
   // TODO: Should > and > be added as aliases for isAfter and isBefore?
   //   could be convenient, or just confusing because this isn't Ordered.
+
+  def days: List[DateTime] = {
+    val from = start
+    val to = end
+    @tailrec
+    def recur(acc: List[DateTime], curr: DateTime, target: DateTime): List[DateTime] = {
+      if(curr.toDateMidnight == target.toDateMidnight) acc
+      else recur(curr :: acc, curr plusDays 1, target)
+    }
+    recur(Nil, from, to)
+  }
 }
