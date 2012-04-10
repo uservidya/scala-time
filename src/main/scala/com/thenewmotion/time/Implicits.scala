@@ -117,7 +117,10 @@ trait JodaImplicits {
 }
 
 trait JavaImplicits {
-  implicit def date2DateTime(d: Date): DateTime = new DateTime(d)
+
+  implicit def date2DateTime(d: Date): DateTime =
+    if (d == null) null
+    else new DateTime(d)
 
   implicit def dateTime2Date(dt: DateTime): Date = dt.toDate
 }
