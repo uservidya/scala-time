@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.thenewmotion</groupId>
         <artifactId>parent</artifactId>
-        <version>1.2</version>
+        <version>1.5-SNAPSHOT</version>
     </parent>
 
     <groupId>com.thenewmotion</groupId>
@@ -41,7 +41,7 @@
         </repository>
         <repository>
             <id>thenewmotion-nexus</id>
-            <url>http://build.thenewmotion.com/nexus/content/groups/public/</url>
+            <url>http://nexus.build.thenewmotion.com/content/groups/public/</url>
         </repository>
     </repositories>
 
