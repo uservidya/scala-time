@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.thenewmotion</groupId>
         <artifactId>parent</artifactId>
-        <version>1.5-SNAPSHOT</version>
+        <version>1.5</version>
     </parent>
 
     <groupId>com.thenewmotion</groupId>
