@@ -39,10 +39,6 @@
             <id>typesafe</id>
             <url>http://repo.typesafe.com/typesafe/releases/</url>
         </repository>
-        <repository>
-            <id>thenewmotion-nexus</id>
-            <url>http://nexus.build.thenewmotion.com/content/groups/public/</url>
-        </repository>
     </repositories>
 
     <pluginRepositories>
