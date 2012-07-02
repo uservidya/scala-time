@@ -21,7 +21,6 @@ package com.thenewmotion.time
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.field.AbstractReadableInstantFieldProperty
 import java.util.Date
-import java.sql.Timestamp
 import org.joda.time._
 import base.{BaseDateTime, AbstractDateTime, AbstractInstant, AbstractPartial}
 
@@ -38,7 +37,7 @@ object JavaImplicits extends JavaImplicits
 object SqlImplicits extends SqlImplicits
 
 trait Implicits extends BuilderImplicits with IntImplicits with JodaImplicits with JavaImplicits
-with SqlImplicits with TupleImplicits
+with SqlImplicits with TupleImplicits with XmlImplicits
 
 trait BuilderImplicits {
   implicit def forcePeriod(builder: DurationBuilder): Period =
@@ -126,6 +125,7 @@ trait JavaImplicits {
 }
 
 trait SqlImplicits {
+  import java.sql.Timestamp
 
   implicit def dateTime2Timestamp(d: BaseDateTime): Timestamp = new Timestamp(d.toDate.getTime)
 
@@ -134,6 +134,18 @@ trait SqlImplicits {
   implicit def with2Timestamp(d: BaseDateTime) = new {
     def toTimestamp: Timestamp = dateTime2Timestamp(d)
   }
+}
+
+trait XmlImplicits {
+  import javax.xml.datatype.{XMLGregorianCalendar, DatatypeFactory}
+
+  lazy val factory = DatatypeFactory.newInstance
+
+  implicit def dateTime2XmlGregCalendar(dt: DateTime) =
+    factory.newXMLGregorianCalendar(dt.toGregorianCalendar)
+
+  implicit def xmlGregCalendar2DateTime(calendar: XMLGregorianCalendar) =
+    new DateTime(calendar.toGregorianCalendar.getTimeInMillis)
 }
 
 trait TupleImplicits {
