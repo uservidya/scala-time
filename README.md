@@ -1,20 +1,23 @@
 A Scala wrapper for Joda Time
+=============================
 
 USAGE:
+------
 
+```scala
   import com.thenewmotion.time.Imports._
 
-  DateTime.now
-	// returns org.joda.time.DateTime = 2009-04-27T13:25:42.659-07:00
+    DateTime.now
+    // returns org.joda.time.DateTime = 2009-04-27T13:25:42.659-07:00
 
 	DateTime.now.hour(2).minute(45).second(10)
 	// returns org.joda.time.DateTime = 2009-04-27T02:45:10.313-07:00
 
-  DateTime.now + 2.months
-  // returns org.joda.time.DateTime = 2009-06-27T13:25:59.195-07:00
+    DateTime.now + 2.months
+    // returns org.joda.time.DateTime = 2009-06-27T13:25:59.195-07:00
 
-  DateTime.nextMonth < DateTime.now + 2.months
-  // returns Boolean = true
+    DateTime.nextMonth < DateTime.now + 2.months
+    // returns Boolean = true
 
 	DateTime.now to DateTime.tomorrow
 	// return org.joda.time.Interval =
@@ -32,6 +35,7 @@ USAGE:
 	
 	2.months + 3.days
 	// returns Period
+```
 
 This is mostly a convenience wrapper around the Joda Time libraries, adding
 more pleasant syntax like operators for addition, subtraction, and comparison.
@@ -44,6 +48,7 @@ http://joda-time.sourceforge.net/index.html
 
 
 MOTIVATION:
+-----------
 
 The Java Date and Calendar libraries are largely inadequate. They are mutable,
 not thread-safe, and very inconvenient to use.
