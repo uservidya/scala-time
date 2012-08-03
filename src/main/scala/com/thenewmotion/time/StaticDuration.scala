@@ -18,7 +18,11 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-object StaticDuration extends StaticDuration
+object StaticDuration extends StaticDuration {
+  def apply(dur: Long) = new Duration(dur)
+  def empty            = Duration.ZERO
+  def ∅                = empty
+}
 
 trait StaticDuration {
   def standardDays(days: Long) = Duration.standardDays(days)
