@@ -1,8 +1,6 @@
-A Scala wrapper for Joda Time
-=============================
+# A Scala wrapper for Joda Time [![Build Status](https://secure.travis-ci.org/thenewmotion/scala-time.png)](http://travis-ci.org/thenewmotion/scala-time)
 
-USAGE:
-------
+## Usage:
 
 ```scala
   import com.thenewmotion.time.Imports._
@@ -46,9 +44,27 @@ also been shortened.
 Please see Joda Time for full explanation of key concepts and API:
 http://joda-time.sourceforge.net/index.html
 
+## Setup
 
-MOTIVATION:
------------
+1. Add this repository to your pom.xml:
+```xml
+    <repository>
+        <id>thenewmotion</id>
+        <name>The New Motion Repository</name>
+        <url>http://nexus.thenewmotion.com/content/repositories/releases-public</url>
+    </repository>
+```
+
+2. Add dependency to your pom.xml:
+```xml
+    <dependency>
+        <groupId>com.thenewmotion</groupId>
+        <artifactId>time</artifactId>
+        <version>1.11</version>
+    </dependency>
+```
+
+## Motivation:
 
 The Java Date and Calendar libraries are largely inadequate. They are mutable,
 not thread-safe, and very inconvenient to use.
