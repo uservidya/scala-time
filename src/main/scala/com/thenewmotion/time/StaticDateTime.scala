@@ -17,6 +17,7 @@ package com.thenewmotion.time
  *
  **/
 import org.joda.time._
+import format.DateTimeFormatter
 import com.thenewmotion.time.Implicits._
 
 object StaticDateTime extends StaticDateTime
@@ -43,4 +44,6 @@ trait StaticDateTime {
   def lastWeek   = now - 1.week
   def lastMonth  = now - 1.month
   def lastYear   = now - 1.year
+
+  def parse(s: String, fmt: DateTimeFormatter) = DateTime.parse(s, fmt)
 }
