@@ -60,7 +60,7 @@ http://joda-time.sourceforge.net/index.html
     <dependency>
         <groupId>com.thenewmotion</groupId>
         <artifactId>time</artifactId>
-        <version>1.11</version>
+        <version>1.13</version>
     </dependency>
 ```
 
