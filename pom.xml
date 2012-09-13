@@ -9,7 +9,7 @@
 
     <groupId>com.thenewmotion</groupId>
     <artifactId>time</artifactId>
-    <version>1.14</version>
+    <version>1.15-SNAPSHOT</version>
 
     <name>Scala-Time</name>
     <description>A Scala wrapper for Joda Time</description>
