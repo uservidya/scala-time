@@ -21,7 +21,7 @@ object Imports extends Imports
 object TypeImports extends TypeImports
 object StaticForwarderImports extends StaticForwarderImports
 
-trait Imports extends TypeImports with StaticForwarderImports with Implicits
+trait Imports extends TypeImports with StaticForwarderImports with Implicits with Instances
 
 trait TypeImports {
   type Chronology     = org.joda.time.Chronology
@@ -48,4 +48,13 @@ trait StaticForwarderImports {
   val LocalTime      = com.thenewmotion.time.StaticLocalTime
   val Period         = com.thenewmotion.time.StaticPeriod
   val Partial        = com.thenewmotion.time.StaticPartial
+}
+
+import scalaz._
+
+trait Instances extends TypeImports {
+  implicit val durationInstance = new Monoid[Duration] {
+    override def zero = StaticDuration.∅
+    override def append(f1: Duration, f2: ⇒ Duration) = f1.withDurationAdded(f2, 1)
+  }
 }

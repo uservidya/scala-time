@@ -54,5 +54,10 @@
             <artifactId>joda-convert</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.scalaz</groupId>
+            <artifactId>scalaz-core_${scala.version}</artifactId>
+            <version>7.0.0-M4</version>
+        </dependency>
     </dependencies>
 </project>
