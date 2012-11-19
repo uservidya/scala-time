@@ -8,10 +8,11 @@
     </parent>
 
     <groupId>com.thenewmotion</groupId>
-    <artifactId>time</artifactId>
+    <artifactId>time-parent</artifactId>
     <version>2.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-    <name>Scala-Time</name>
+    <name>Scala-time Parent Project</name>
     <description>A Scala wrapper for Joda Time</description>
     <url>${github.repository.url}</url>
     <inceptionYear>2011</inceptionYear>
@@ -35,6 +36,12 @@
         <developerConnection>${github.connection}</developerConnection>
     </scm>
 
+    <modules>
+        <module>time</module>
+        <module>time-scalaz-bindings</module>
+    </modules>
+
+
     <repositories>
         <repository>
             <id>thenewmotion</id>
@@ -43,7 +50,8 @@
         </repository>
     </repositories>
 
-    <dependencies>
+    <dependencyManagement>
+        <dependencies>
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -54,5 +62,11 @@
             <artifactId>joda-convert</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.scalaz</groupId>
+            <artifactId>scalaz-core_${scala.version}</artifactId>
+            <version>7.0.0-M4</version>
+        </dependency>
     </dependencies>
+    </dependencyManagement>
 </project>

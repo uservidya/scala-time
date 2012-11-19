@@ -22,7 +22,6 @@ object TypeImports extends TypeImports
 object StaticForwarderImports extends StaticForwarderImports
 
 trait Imports extends TypeImports with StaticForwarderImports with Implicits
-
 trait TypeImports {
   type Chronology     = org.joda.time.Chronology
   type DateTime       = org.joda.time.DateTime
