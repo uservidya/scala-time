@@ -3,3 +3,8 @@ target/
 .idea/
 *.iml
 .ensime
+
+# the following is for vi and emacs users
+*~
+*#
+.#*
