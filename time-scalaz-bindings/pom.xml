@@ -8,7 +8,7 @@
         <version>2.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>time-scalaz-bindings_${scala.version}</artifactId>
+    <artifactId>time-scalaz-bindings_2.10.0-RC2</artifactId>
     <name>time-scalaz-bindings</name>
 
     <dependencies>
