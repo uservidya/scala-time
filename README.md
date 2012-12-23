@@ -59,7 +59,7 @@ http://joda-time.sourceforge.net/index.html
 ```xml
     <dependency>
         <groupId>com.thenewmotion</groupId>
-        <artifactId>time_2.10.0-RC2</artifactId>
+        <artifactId>time_2.10</artifactId>
         <version>2.0</version>
     </dependency>
 ```
