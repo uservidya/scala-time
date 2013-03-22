@@ -25,15 +25,10 @@ import org.joda.time._
 import base.{BaseDateTime, AbstractDateTime, AbstractInstant, AbstractPartial}
 
 object Implicits extends Implicits
-
 object BuilderImplicits extends Implicits
-
 object IntImplicits extends IntImplicits
-
 object JodaImplicits extends JodaImplicits
-
 object JavaImplicits extends JavaImplicits
-
 object SqlImplicits extends SqlImplicits
 
 trait Implicits extends BuilderImplicits with IntImplicits with JodaImplicits with JavaImplicits
@@ -49,7 +44,6 @@ trait BuilderImplicits {
 
 trait IntImplicits {
   implicit def RichInt(n: Int): RichInt = new com.thenewmotion.time.RichInt(n)
-
   implicit def RichLong(n: Long): RichLong = new com.thenewmotion.time.RichLong(n)
 }
 
@@ -116,11 +110,7 @@ trait JodaImplicits {
 }
 
 trait JavaImplicits {
-
-  implicit def date2DateTime(d: Date): DateTime =
-    if (d == null) null
-    else new DateTime(d)
-
+  implicit def date2DateTime(d: Date): DateTime = if (d == null) null else new DateTime(d)
   implicit def dateTime2Date(dt: DateTime): Date = dt.toDate
 }
 
@@ -141,11 +131,15 @@ trait XmlImplicits {
 
   lazy val factory = DatatypeFactory.newInstance
 
-  implicit def dateTime2XmlGregCalendar(dt: DateTime) =
+  implicit def dateTime2XmlGregCalendar(dt: DateTime): XMLGregorianCalendar =
     factory.newXMLGregorianCalendar(dt.toGregorianCalendar)
 
-  implicit def xmlGregCalendar2DateTime(calendar: XMLGregorianCalendar) =
+  implicit def xmlGregCalendar2DateTime(calendar: XMLGregorianCalendar): DateTime =
     new DateTime(calendar.toGregorianCalendar.getTimeInMillis)
+
+  implicit def withToXMLGregCalendar(x: DateTime) = new {
+    def toXMLGregCalendar: XMLGregorianCalendar = dateTime2XmlGregCalendar(x)
+  }
 }
 
 trait TupleImplicits {
