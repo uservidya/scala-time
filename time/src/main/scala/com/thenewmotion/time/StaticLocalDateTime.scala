@@ -25,10 +25,8 @@ object StaticLocalDateTime extends StaticLocalDateTime
 trait StaticLocalDateTime {
   type Property = LocalDateTime.Property
   
-  def fromCalendarFields(calendar: Calendar) =
-    LocalDateTime.fromCalendarFields(calendar)
-  def fromDateFields(date: Date) =
-    LocalDateTime.fromDateFields(date)
+  def fromCalendarFields(calendar: Calendar) = LocalDateTime.fromCalendarFields(calendar)
+  def fromDateFields(date: Date) = LocalDateTime.fromDateFields(date)
 
   def now        = new LocalDateTime
 

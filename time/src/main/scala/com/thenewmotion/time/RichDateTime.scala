@@ -17,69 +17,62 @@ package com.thenewmotion.time
  *
  **/
 import org.joda.time._
+import java.sql.Timestamp
 
-class RichDateTime(val underlying: DateTime) extends Ordered[RichDateTime] {
-  def -(duration: Long): DateTime =
-    underlying.minus(duration)
+class RichDateTime(val self: DateTime) extends AnyVal {
+  def -(duration: Long): DateTime = self.minus(duration)
 
-  def -(duration: ReadableDuration): DateTime =
-    underlying.minus(duration)
+  def -(duration: ReadableDuration): DateTime = self.minus(duration)
 
-  def -(period: ReadablePeriod): DateTime =
-    underlying.minus(period)
+  def -(period: ReadablePeriod): DateTime = self.minus(period)
 
-  def -(builder: DurationBuilder): DateTime =
-    underlying.minus(builder.underlying)
+  def -(builder: DurationBuilder): DateTime = self.minus(builder.underlying)
 
-  def +(duration: Long): DateTime =
-    underlying.plus(duration)
+  def +(duration: Long): DateTime = self.plus(duration)
 
-  def +(duration: ReadableDuration): DateTime =
-    underlying.plus(duration)
+  def +(duration: ReadableDuration): DateTime = self.plus(duration)
 
-  def +(period: ReadablePeriod): DateTime =
-    underlying.plus(period)
+  def +(period: ReadablePeriod): DateTime = self.plus(period)
 
-  def +(builder: DurationBuilder): DateTime =
-    underlying.plus(builder.underlying)
+  def +(builder: DurationBuilder): DateTime = self.plus(builder.underlying)
 
-  def second: DateTime.Property = underlying.secondOfMinute
+  def second: DateTime.Property = self.secondOfMinute
 
-  def minute: DateTime.Property = underlying.minuteOfHour
+  def minute: DateTime.Property = self.minuteOfHour
 
-  def hour: DateTime.Property = underlying.hourOfDay
+  def hour: DateTime.Property = self.hourOfDay
 
-  def day: DateTime.Property = underlying.dayOfMonth
+  def day: DateTime.Property = self.dayOfMonth
 
-  def week: DateTime.Property = underlying.weekOfWeekyear
+  def week: DateTime.Property = self.weekOfWeekyear
 
-  def month: DateTime.Property = underlying.monthOfYear
+  def month: DateTime.Property = self.monthOfYear
 
-  def year: DateTime.Property = underlying.year
+  def year: DateTime.Property = self.year
 
-  def century: DateTime.Property = underlying.centuryOfEra
+  def century: DateTime.Property = self.centuryOfEra
 
-  def era: DateTime.Property = underlying.era
+  def era: DateTime.Property = self.era
 
-  def withSecond(second: Int) = underlying.withSecondOfMinute(second)
+  def withSecond(second: Int) = self.withSecondOfMinute(second)
 
-  def withMinute(minute: Int) = underlying.withMinuteOfHour(minute)
+  def withMinute(minute: Int) = self.withMinuteOfHour(minute)
 
-  def withHour(hour: Int) = underlying.withHourOfDay(hour)
+  def withHour(hour: Int) = self.withHourOfDay(hour)
 
-  def withDay(day: Int) = underlying.withDayOfMonth(day)
+  def withDay(day: Int) = self.withDayOfMonth(day)
 
-  def withWeek(week: Int) = underlying.withWeekOfWeekyear(week)
+  def withWeek(week: Int) = self.withWeekOfWeekyear(week)
 
-  def withMonth(month: Int) = underlying.withMonthOfYear(month)
+  def withMonth(month: Int) = self.withMonthOfYear(month)
 
-  def withYear(year: Int) = underlying.withYear(year)
+  def withYear(year: Int) = self.withYear(year)
 
-  def withCentury(century: Int) = underlying.withCenturyOfEra(century)
+  def withCentury(century: Int) = self.withCenturyOfEra(century)
 
-  def withEra(era: Int) = underlying.withEra(era)
+  def withEra(era: Int) = self.withEra(era)
 
-  def compare(that: RichDateTime) = underlying.compareTo(that.underlying)
+  def compare(that: RichDateTime) = self.compareTo(that.self)
 
   def monthInterval: Interval = {
     val start = withDay(1).toDateMidnight
@@ -87,7 +80,9 @@ class RichDateTime(val underlying: DateTime) extends Ordered[RichDateTime] {
   }
 
   def dayInterval: Interval = {
-    val start = new DateMidnight(underlying.getMillis(), underlying.getChronology())
+    val start = new DateMidnight(self.getMillis(), self.getChronology())
     new Interval(start, start.plusDays(1))
   }
+
+  def toTimestamp: Timestamp = new Timestamp(self.getMillis)
 }

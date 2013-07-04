@@ -18,37 +18,31 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichLocalDateTime(underlying: LocalDateTime) {
-  def -(duration: ReadableDuration): LocalDateTime =
-    underlying.minus(duration)
-  def -(period: ReadablePeriod): LocalDateTime =
-    underlying.minus(period)
-  def -(builder: DurationBuilder): LocalDateTime =
-    underlying.minus(builder.underlying)
-  def +(duration: ReadableDuration): LocalDateTime =
-    underlying.plus(duration)
-  def +(period: ReadablePeriod): LocalDateTime =
-    underlying.plus(period)
-  def +(builder: DurationBuilder): LocalDateTime =
-    underlying.plus(builder.underlying)
+class RichLocalDateTime(val self: LocalDateTime) extends AnyVal {
+  def -(duration: ReadableDuration): LocalDateTime = self.minus(duration)
+  def -(period: ReadablePeriod): LocalDateTime = self.minus(period)
+  def -(builder: DurationBuilder): LocalDateTime = self.minus(builder.underlying)
+  def +(duration: ReadableDuration): LocalDateTime = self.plus(duration)
+  def +(period: ReadablePeriod): LocalDateTime = self.plus(period)
+  def +(builder: DurationBuilder): LocalDateTime = self.plus(builder.underlying)
 
-  def second: LocalDateTime.Property = underlying.secondOfMinute
-  def minute: LocalDateTime.Property = underlying.minuteOfHour
-  def hour: LocalDateTime.Property = underlying.hourOfDay
-  def day: LocalDateTime.Property = underlying.dayOfMonth
-  def week: LocalDateTime.Property = underlying.weekOfWeekyear
-  def month: LocalDateTime.Property = underlying.monthOfYear
-  def year: LocalDateTime.Property = underlying.year
-  def century: LocalDateTime.Property = underlying.centuryOfEra
-  def era: LocalDateTime.Property = underlying.era
+  def second: LocalDateTime.Property = self.secondOfMinute
+  def minute: LocalDateTime.Property = self.minuteOfHour
+  def hour: LocalDateTime.Property = self.hourOfDay
+  def day: LocalDateTime.Property = self.dayOfMonth
+  def week: LocalDateTime.Property = self.weekOfWeekyear
+  def month: LocalDateTime.Property = self.monthOfYear
+  def year: LocalDateTime.Property = self.year
+  def century: LocalDateTime.Property = self.centuryOfEra
+  def era: LocalDateTime.Property = self.era
 
-  def withSecond(second: Int) = underlying.withSecondOfMinute(second)
-  def withMinute(minute: Int) = underlying.withMinuteOfHour(minute)
-  def withHour(hour: Int) = underlying.withHourOfDay(hour)
-  def withDay(day: Int) = underlying.withDayOfMonth(day)
-  def withWeek(week: Int) = underlying.withWeekOfWeekyear(week)
-  def withMonth(month: Int) = underlying.withMonthOfYear(month)
-  def withYear(year: Int) = underlying.withYear(year)
-  def withCentury(century: Int) = underlying.withCenturyOfEra(century)
-  def withEra(era: Int) = underlying.withEra(era)
+  def withSecond(second: Int) = self.withSecondOfMinute(second)
+  def withMinute(minute: Int) = self.withMinuteOfHour(minute)
+  def withHour(hour: Int) = self.withHourOfDay(hour)
+  def withDay(day: Int) = self.withDayOfMonth(day)
+  def withWeek(week: Int) = self.withWeekOfWeekyear(week)
+  def withMonth(month: Int) = self.withMonthOfYear(month)
+  def withYear(year: Int) = self.withYear(year)
+  def withCentury(century: Int) = self.withCenturyOfEra(century)
+  def withEra(era: Int) = self.withEra(era)
 }

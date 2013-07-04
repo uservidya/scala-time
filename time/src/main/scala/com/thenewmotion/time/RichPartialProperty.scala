@@ -19,12 +19,10 @@ package com.thenewmotion.time
 import java.util.Locale
 import org.joda.time._
 
-class RichPartialProperty(underlying: Partial.Property) {
-  def partial: Partial =
-    underlying.getPartial
+class RichPartialProperty(val self: Partial.Property) extends AnyVal {
+  def partial: Partial = self.getPartial
 
-  def apply(value: Int): Partial = underlying.setCopy(value)
-  def apply(text: String): Partial = underlying.setCopy(text)
-  def apply(text: String, locale: Locale): Partial =
-    underlying.setCopy(text, locale)
+  def apply(value: Int): Partial = self.setCopy(value)
+  def apply(text: String): Partial = self.setCopy(text)
+  def apply(text: String, locale: Locale): Partial = self.setCopy(text, locale)
 }

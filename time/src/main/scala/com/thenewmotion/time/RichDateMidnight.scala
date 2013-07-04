@@ -18,21 +18,13 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichDateMidnight(underlying: DateMidnight) {
-  def -(duration: Long): DateMidnight =
-    underlying.minus(duration)
-  def -(duration: ReadableDuration): DateMidnight =
-    underlying.minus(duration)
-  def -(period: ReadablePeriod): DateMidnight =
-    underlying.minus(period)
-  def -(builder: DurationBuilder): DateMidnight =
-    underlying.minus(builder.underlying)
-  def +(duration: Long): DateMidnight =
-    underlying.plus(duration)
-  def +(duration: ReadableDuration): DateMidnight =
-    underlying.plus(duration)
-  def +(period: ReadablePeriod): DateMidnight =
-    underlying.plus(period)
-  def +(builder: DurationBuilder): DateMidnight =
-    underlying.plus(builder.underlying)
+class RichDateMidnight(val self: DateMidnight) extends AnyVal {
+  def -(duration: Long): DateMidnight = self.minus(duration)
+  def -(duration: ReadableDuration): DateMidnight = self.minus(duration)
+  def -(period: ReadablePeriod): DateMidnight = self.minus(period)
+  def -(builder: DurationBuilder): DateMidnight = self.minus(builder.underlying)
+  def +(duration: Long): DateMidnight = self.plus(duration)
+  def +(duration: ReadableDuration): DateMidnight = self.plus(duration)
+  def +(period: ReadablePeriod): DateMidnight = self.plus(period)
+  def +(builder: DurationBuilder): DateMidnight = self.plus(builder.underlying)
 }

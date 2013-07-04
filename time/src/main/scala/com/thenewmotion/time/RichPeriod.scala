@@ -18,36 +18,21 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichPeriod(underlying: Period) {
-  def days: Int =
-    underlying.getDays
-  def hours: Int =
-    underlying.getHours
-  def millis: Int =
-    underlying.getMillis
-  def minutes: Int =
-    underlying.getMinutes
-  def months: Int =
-    underlying.getMonths
-  def seconds: Int =
-    underlying.getSeconds
-  def weeks: Int =
-    underlying.getWeeks
-  def years: Int =
-    underlying.getYears
-  def -(period: ReadablePeriod): Period =
-    underlying.minus(period)
-  def +(period: ReadablePeriod): Period =
-    underlying.plus(period)
-  def ago: DateTime =
-    StaticDateTime.now.minus(underlying)
-  def later: DateTime =
-    StaticDateTime.now.plus(underlying)
-  def from(dt: DateTime): DateTime =
-    dt.plus(underlying)
-  def before(dt: DateTime): DateTime =
-    dt.minus(underlying)
+class RichPeriod(val self: Period) extends AnyVal {
+  def days: Int = self.getDays
+  def hours: Int = self.getHours
+  def millis: Int = self.getMillis
+  def minutes: Int = self.getMinutes
+  def months: Int = self.getMonths
+  def seconds: Int = self.getSeconds
+  def weeks: Int = self.getWeeks
+  def years: Int = self.getYears
+  def -(period: ReadablePeriod): Period = self.minus(period)
+  def +(period: ReadablePeriod): Period = self.plus(period)
+  def ago: DateTime = StaticDateTime.now.minus(self)
+  def later: DateTime = StaticDateTime.now.plus(self)
+  def from(dt: DateTime): DateTime = dt.plus(self)
+  def before(dt: DateTime): DateTime = dt.minus(self)
   
-  def standardDuration: Duration =
-    underlying.toStandardDuration
+  def standardDuration: Duration = self.toStandardDuration
 }

@@ -7,7 +7,7 @@ package com.thenewmotion.time
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -20,25 +20,15 @@ import java.util.Date
 import org.joda.time._
 import org.joda.time.base.AbstractInstant
 
-class RichAbstractInstant(underlying: AbstractInstant) {
-  def date: Date =
-    underlying.toDate
-  def dateTime: DateTime =
-    underlying.toDateTime
-  def dateTime(chronology: Chronology): DateTime =
-    underlying.toDateTime(chronology)
-  def dateTime(zone: DateTimeZone): DateTime =
-    underlying.toDateTime(zone)
-  def dateTimeISO: DateTime =
-    underlying.toDateTimeISO
-  def instant: Instant =
-    underlying.toInstant
-  def mutableDateTime: MutableDateTime =
-    underlying.toMutableDateTime
-  def mutableDateTime(chronology: Chronology): MutableDateTime =
-    underlying.toMutableDateTime(chronology)
-  def mutableDateTime(zone: DateTimeZone): MutableDateTime =
-    underlying.toMutableDateTime(zone)
-  def mutableDateTimeISO: MutableDateTime =
-    underlying.toMutableDateTimeISO
+class RichAbstractInstant(val self: AbstractInstant) extends AnyVal {
+  def date: Date = self.toDate
+  def dateTime: DateTime = self.toDateTime
+  def dateTime(chronology: Chronology): DateTime = self.toDateTime(chronology)
+  def dateTime(zone: DateTimeZone): DateTime = self.toDateTime(zone)
+  def dateTimeISO: DateTime = self.toDateTimeISO
+  def instant: Instant = self.toInstant
+  def mutableDateTime: MutableDateTime = self.toMutableDateTime
+  def mutableDateTime(chronology: Chronology): MutableDateTime = self.toMutableDateTime(chronology)
+  def mutableDateTime(zone: DateTimeZone): MutableDateTime = self.toMutableDateTime(zone)
+  def mutableDateTimeISO: MutableDateTime = self.toMutableDateTimeISO
 }

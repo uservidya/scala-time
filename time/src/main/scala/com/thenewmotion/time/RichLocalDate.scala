@@ -19,29 +19,25 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichLocalDate(underlying: LocalDate) {
-  def -(period: ReadablePeriod): LocalDate =
-    underlying.minus(period)
-  def -(builder: DurationBuilder): LocalDate =
-    underlying.minus(builder.underlying)
-  def +(period: ReadablePeriod): LocalDate =
-    underlying.plus(period)
-  def +(builder: DurationBuilder): LocalDate =
-    underlying.plus(builder.underlying)
+class RichLocalDate(val self: LocalDate) extends AnyVal {
+  def -(period: ReadablePeriod): LocalDate = self.minus(period)
+  def -(builder: DurationBuilder): LocalDate = self.minus(builder.underlying)
+  def +(period: ReadablePeriod): LocalDate = self.plus(period)
+  def +(builder: DurationBuilder): LocalDate = self.plus(builder.underlying)
 
-  def day: LocalDate.Property = underlying.dayOfMonth
-  def week: LocalDate.Property = underlying.weekOfWeekyear
-  def month: LocalDate.Property = underlying.monthOfYear
-  def year: LocalDate.Property = underlying.year
-  def century: LocalDate.Property = underlying.centuryOfEra
-  def era: LocalDate.Property = underlying.era
+  def day: LocalDate.Property = self.dayOfMonth
+  def week: LocalDate.Property = self.weekOfWeekyear
+  def month: LocalDate.Property = self.monthOfYear
+  def year: LocalDate.Property = self.year
+  def century: LocalDate.Property = self.centuryOfEra
+  def era: LocalDate.Property = self.era
 
-  def withDay(day: Int) = underlying.withDayOfMonth(day)
-  def withWeek(week: Int) = underlying.withWeekOfWeekyear(week)
-  def withMonth(month: Int) = underlying.withMonthOfYear(month)
-  def withYear(year: Int) = underlying.withYear(year)
-  def withCentury(century: Int) = underlying.withCenturyOfEra(century)
-  def withEra(era: Int) = underlying.withEra(era)
+  def withDay(day: Int) = self.withDayOfMonth(day)
+  def withWeek(week: Int) = self.withWeekOfWeekyear(week)
+  def withMonth(month: Int) = self.withMonthOfYear(month)
+  def withYear(year: Int) = self.withYear(year)
+  def withCentury(century: Int) = self.withCenturyOfEra(century)
+  def withEra(era: Int) = self.withEra(era)
   
-  def interval = underlying.toInterval
+  def interval = self.toInterval
 }

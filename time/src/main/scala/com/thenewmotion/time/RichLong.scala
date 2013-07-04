@@ -18,7 +18,7 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichLong(n: Long) {
-  def toDateTime = new DateTime(n)
-  def toDuration = new Duration(n)
+class RichLong(val self: Long) extends AnyVal {
+  def toDateTime = new DateTime(self)
+  def toDuration = new Duration(self)
 }

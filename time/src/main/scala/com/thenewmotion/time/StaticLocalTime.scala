@@ -29,14 +29,10 @@ trait StaticLocalTime {
   final val MIDNIGHT = LocalTime.MIDNIGHT
   final val Midnight = LocalTime.MIDNIGHT
   
-  def fromCalendarFields(calendar: Calendar) =
-    LocalTime.fromCalendarFields(calendar)
-  def fromDateFields(date: Date) =
-    LocalTime.fromDateFields(date)
-  def fromMillisOfDay(millis: Long) =
-    LocalTime.fromMillisOfDay(millis)
-  def fromMillisOfDay(millis: Long, chrono: Chronology) =
-    LocalTime.fromMillisOfDay(millis, chrono)
+  def fromCalendarFields(calendar: Calendar) = LocalTime.fromCalendarFields(calendar)
+  def fromDateFields(date: Date) = LocalTime.fromDateFields(date)
+  def fromMillisOfDay(millis: Long) = LocalTime.fromMillisOfDay(millis)
+  def fromMillisOfDay(millis: Long, chrono: Chronology) = LocalTime.fromMillisOfDay(millis, chrono)
 
   def now        = new LocalTime
 

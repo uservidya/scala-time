@@ -18,15 +18,11 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichPartial(underlying: Partial) {
-  def formatter = underlying.getFormatter
+class RichPartial(val self: Partial) extends AnyVal {
+  def formatter = self.getFormatter
   
-  def -(period: ReadablePeriod): Partial =
-    underlying.minus(period)
-  def -(builder: DurationBuilder): Partial =
-    underlying.minus(builder.underlying)
-  def +(period: ReadablePeriod): Partial =
-    underlying.plus(period)
-  def +(builder: DurationBuilder): Partial =
-    underlying.plus(builder.underlying)
+  def -(period: ReadablePeriod): Partial = self.minus(period)
+  def -(builder: DurationBuilder): Partial = self.minus(builder.underlying)
+  def +(period: ReadablePeriod): Partial = self.plus(period)
+  def +(builder: DurationBuilder): Partial = self.plus(builder.underlying)
 }

@@ -16,13 +16,10 @@ package com.thenewmotion.time
  * limitations under the License. 
  *
  **/
-import java.util.{Locale, Calendar, GregorianCalendar}
-import org.joda.time._
+import java.util.{Locale, Calendar}
 import org.joda.time.base.AbstractDateTime
 
-class RichAbstractDateTime(underlying: AbstractDateTime) {
-  def calendar(locale: Locale): Calendar =
-    underlying.toCalendar(locale)
-  def gregorianCalendar: Calendar =
-    underlying.toGregorianCalendar
+class RichAbstractDateTime(val self: AbstractDateTime) extends AnyVal {
+  def calendar(locale: Locale): Calendar = self.toCalendar(locale)
+  def gregorianCalendar: Calendar = self.toGregorianCalendar
 }

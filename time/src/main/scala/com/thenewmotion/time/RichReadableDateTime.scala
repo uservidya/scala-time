@@ -18,26 +18,16 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichReadableDateTime(underlying: ReadableDateTime) {  
-  def second: Int =
-    underlying.getSecondOfMinute
-  def minute: Int =
-    underlying.getMinuteOfHour
-  def hour: Int =
-    underlying.getHourOfDay
-  def day: Int =
-    underlying.getDayOfMonth
-  def week: Int =
-    underlying.getWeekOfWeekyear
-  def month: Int =
-    underlying.getMonthOfYear
-  def year: Int =
-    underlying.getYear
-  def century: Int =
-    underlying.getCenturyOfEra
+class RichReadableDateTime(val self: ReadableDateTime) extends AnyVal {
+  def second: Int = self.getSecondOfMinute
+  def minute: Int = self.getMinuteOfHour
+  def hour: Int = self.getHourOfDay
+  def day: Int = self.getDayOfMonth
+  def week: Int = self.getWeekOfWeekyear
+  def month: Int = self.getMonthOfYear
+  def year: Int = self.getYear
+  def century: Int = self.getCenturyOfEra
   
-  def dateTime: DateTime =
-    underlying.toDateTime
-  def mutableDateTime: MutableDateTime =
-    underlying.toMutableDateTime
+  def dateTime: DateTime = self.toDateTime
+  def mutableDateTime: MutableDateTime = self.toMutableDateTime
 }

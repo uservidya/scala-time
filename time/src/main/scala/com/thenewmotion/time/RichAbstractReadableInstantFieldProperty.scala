@@ -20,56 +20,31 @@ import java.util.Locale
 import org.joda.time._
 import org.joda.time.field.AbstractReadableInstantFieldProperty
 
-class RichAbstractReadableInstantFieldProperty(underlying: AbstractReadableInstantFieldProperty) {
-  def shortText: String =
-    underlying.getAsShortText
-  def asShortText: String =
-    underlying.getAsShortText
-  def shortText(locale: Locale): String =
-    underlying.getAsShortText(locale)
-  def asShortText(locale: Locale): String =
-    underlying.getAsShortText(locale)
-  def asString: String =
-    underlying.getAsString
-  def text: String =
-    underlying.getAsText
-  def asText: String =
-    underlying.getAsText
-  def text(locale: Locale): String =
-    underlying.getAsText(locale)
-  def asText(locale: Locale): String =
-    underlying.getAsText(locale)
-  def durationField: DurationField =
-    underlying.getDurationField
-  def field: DateTimeField =
-    underlying.getField
-  def fieldType: DateTimeFieldType =
-    underlying.getFieldType
-  def leapAmount: Int =
-    underlying.getLeapAmount
-  def leapDurationField: DurationField =
-    underlying.getLeapDurationField
-  def maximumValue: Int =
-    underlying.getMaximumValue
-  def maxValue: Int =
-    underlying.getMaximumValue
-  def maximumValueOverall: Int =
-    underlying.getMaximumValueOverall
-  def maxValueOverall: Int =
-    underlying.getMaximumValueOverall
-  def minimumValue: Int =
-    underlying.getMinimumValue
-  def minValue: Int =
-    underlying.getMinimumValue
-  def minimumValueOverall: Int =
-    underlying.getMinimumValueOverall
-  def minValueOverall: Int =
-    underlying.getMinimumValueOverall
-  def name: String =
-    underlying.getName
-  def rangeDurationField: DurationField =
-    underlying.getRangeDurationField
+class RichAbstractReadableInstantFieldProperty(val self: AbstractReadableInstantFieldProperty) extends AnyVal {
+  def shortText: String = self.getAsShortText
+  def asShortText: String = self.getAsShortText
+  def shortText(locale: Locale): String = self.getAsShortText(locale)
+  def asShortText(locale: Locale): String = self.getAsShortText(locale)
+  def asString: String = self.getAsString
+  def text: String = self.getAsText
+  def asText: String = self.getAsText
+  def text(locale: Locale): String = self.getAsText(locale)
+  def asText(locale: Locale): String = self.getAsText(locale)
+  def durationField: DurationField = self.getDurationField
+  def field: DateTimeField = self.getField
+  def fieldType: DateTimeFieldType = self.getFieldType
+  def leapAmount: Int = self.getLeapAmount
+  def leapDurationField: DurationField = self.getLeapDurationField
+  def maximumValue: Int = self.getMaximumValue
+  def maxValue: Int = self.getMaximumValue
+  def maximumValueOverall: Int = self.getMaximumValueOverall
+  def maxValueOverall: Int = self.getMaximumValueOverall
+  def minimumValue: Int = self.getMinimumValue
+  def minValue: Int = self.getMinimumValue
+  def minimumValueOverall: Int = self.getMinimumValueOverall
+  def minValueOverall: Int = self.getMinimumValueOverall
+  def name: String = self.getName
+  def rangeDurationField: DurationField = self.getRangeDurationField
 
-  def interval: Interval =
-    underlying.toInterval
+  def interval: Interval = self.toInterval
 }

@@ -19,22 +19,15 @@ package com.thenewmotion.time
 import java.util.Locale
 import org.joda.time._
 
-class RichLocalTimeProperty(underlying: LocalTime.Property) {
-  def localTime: LocalTime =
-    underlying.getLocalTime
-  def roundFloor: LocalTime =
-    underlying.roundFloorCopy
-  def roundCeiling: LocalTime =
-    underlying.roundCeilingCopy
-  def roundDown: LocalTime =
-    underlying.roundFloorCopy
-  def roundUp: LocalTime =
-    underlying.roundCeilingCopy
-  def round: LocalTime =
-    underlying.roundHalfEvenCopy
+class RichLocalTimeProperty(val self: LocalTime.Property) extends AnyVal {
+  def localTime: LocalTime = self.getLocalTime
+  def roundFloor: LocalTime = self.roundFloorCopy
+  def roundCeiling: LocalTime = self.roundCeilingCopy
+  def roundDown: LocalTime = self.roundFloorCopy
+  def roundUp: LocalTime = self.roundCeilingCopy
+  def round: LocalTime = self.roundHalfEvenCopy
 
-  def apply(value: Int): LocalTime = underlying.setCopy(value)
-  def apply(text: String): LocalTime = underlying.setCopy(text)
-  def apply(text: String, locale: Locale): LocalTime =
-    underlying.setCopy(text, locale)
+  def apply(value: Int): LocalTime = self.setCopy(value)
+  def apply(text: String): LocalTime = self.setCopy(text)
+  def apply(text: String, locale: Locale): LocalTime = self.setCopy(text, locale)
 }

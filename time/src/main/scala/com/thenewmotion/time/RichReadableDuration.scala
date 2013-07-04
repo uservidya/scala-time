@@ -18,9 +18,7 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichReadableDuration(underlying: ReadableDuration) extends Ordered[ReadableDuration] {
-  def millis: Long =
-    underlying.getMillis
-  def compare(other: ReadableDuration): Int =
-    underlying.compareTo(other)
+class RichReadableDuration(val self: ReadableDuration) extends AnyVal with Ordered[ReadableDuration] {
+  def millis: Long = self.getMillis
+  def compare(other: ReadableDuration): Int = self.compareTo(other)
 }

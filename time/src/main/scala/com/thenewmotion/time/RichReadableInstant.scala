@@ -18,19 +18,13 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichReadableInstant(underlying: ReadableInstant) extends Ordered[ReadableInstant] {
-  def chronology: Chronology =
-    underlying.getChronology
-  def millis: Long =
-    underlying.getMillis
-  def zone: DateTimeZone =
-    underlying.getZone
-  override def compare(that: ReadableInstant): Int =
-    underlying.compareTo(that)
+class RichReadableInstant(val self: ReadableInstant) extends AnyVal with Ordered[ReadableInstant] {
+  def chronology: Chronology = self.getChronology
+  def millis: Long = self.getMillis
+  def zone: DateTimeZone = self.getZone
+  override def compare(that: ReadableInstant): Int = self.compareTo(that)
   
-  def to(other: ReadableInstant): Interval =
-    new Interval(underlying, other)
+  def to(other: ReadableInstant): Interval = new Interval(self, other)
 
-  def instant: Instant =
-    underlying.toInstant
+  def instant: Instant = self.toInstant
 }

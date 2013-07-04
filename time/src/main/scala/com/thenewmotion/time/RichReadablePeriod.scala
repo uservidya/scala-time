@@ -18,7 +18,6 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichReadablePeriod(underlying: ReadablePeriod) {
-  def periodType: PeriodType =
-    underlying.getPeriodType
+class RichReadablePeriod(val self: ReadablePeriod) extends AnyVal {
+  def periodType: PeriodType = self.getPeriodType
 }

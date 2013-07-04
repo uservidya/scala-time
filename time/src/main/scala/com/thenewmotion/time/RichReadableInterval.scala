@@ -19,18 +19,13 @@ package com.thenewmotion.time
 import org.joda.time._
 import scala.annotation.tailrec
 
-class RichReadableInterval(underlying: ReadableInterval) {
-  def chronology: Chronology =
-    underlying.getChronology
-  def end: DateTime =
-    underlying.getEnd
-  def start: DateTime =
-    underlying.getStart
+class RichReadableInterval(val self: ReadableInterval) extends AnyVal {
+  def chronology: Chronology = self.getChronology
+  def end: DateTime = self.getEnd
+  def start: DateTime = self.getStart
 
-  def duration: Duration =
-    underlying.toDuration
-  def millis: Long =
-    underlying.toDuration.getMillis
+  def duration: Duration = self.toDuration
+  def millis: Long = self.toDuration.getMillis
   // TODO: Should > and > be added as aliases for isAfter and isBefore?
   //   could be convenient, or just confusing because this isn't Ordered.
 

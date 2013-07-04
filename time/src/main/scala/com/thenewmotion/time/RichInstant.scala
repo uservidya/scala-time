@@ -18,13 +18,9 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichInstant(underlying: Instant) {
-  def -(duration: Long): Instant =
-    underlying.minus(duration)
-  def -(duration: ReadableDuration): Instant =
-    underlying.minus(duration)
-  def +(duration: Long): Instant =
-    underlying.plus(duration)
-  def +(duration: ReadableDuration): Instant =
-    underlying.plus(duration)
+class RichInstant(val self: Instant) extends AnyVal {
+  def -(duration: Long): Instant = self.minus(duration)
+  def -(duration: ReadableDuration): Instant = self.minus(duration)
+  def +(duration: Long): Instant = self.plus(duration)
+  def +(duration: ReadableDuration): Instant = self.plus(duration)
 }

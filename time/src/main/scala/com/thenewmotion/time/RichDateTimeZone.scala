@@ -18,7 +18,6 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichDateTimeZone(underlying: DateTimeZone) {
-  def id: String =
-    underlying.getID
+class RichDateTimeZone(val self: DateTimeZone) extends AnyVal {
+  def id: String = self.getID
 }

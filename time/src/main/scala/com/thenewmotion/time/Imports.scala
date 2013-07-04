@@ -1,5 +1,7 @@
 package com.thenewmotion.time
 
+import java.sql.Timestamp
+
 /**
  * Copyright 2009 Jorge Ortiz
  * Copyright 2009 Barry Kaplan
@@ -22,6 +24,7 @@ object TypeImports extends TypeImports
 object StaticForwarderImports extends StaticForwarderImports
 
 trait Imports extends TypeImports with StaticForwarderImports with Implicits
+
 trait TypeImports {
   type Chronology     = org.joda.time.Chronology
   type DateTime       = org.joda.time.DateTime

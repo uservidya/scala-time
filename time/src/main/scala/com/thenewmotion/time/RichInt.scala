@@ -18,33 +18,33 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichInt(n: Int) {
+class RichInt(val self: Int) extends AnyVal {
   // These units of time can build durations or periods.
   // At most we lose a leap second. (Unless someone adopts
   // leap minutes).
-  def millis  = DurationBuilder(Period.millis(n))
-  def seconds = DurationBuilder(Period.seconds(n))
-  def minutes = DurationBuilder(Period.minutes(n))
-  def hours   = DurationBuilder(Period.hours(n))
+  def millis  = DurationBuilder(Period.millis(self))
+  def seconds = DurationBuilder(Period.seconds(self))
+  def minutes = DurationBuilder(Period.minutes(self))
+  def hours   = DurationBuilder(Period.hours(self))
 
   // These units of time can only be periods. At this
   // point if we made durations automatically we'd start
   // getting into trouble with daylight savings time,
   // monthly differences, leap years, etc.
-  def days   = Period.days(n)
-  def weeks  = Period.weeks(n)
-  def months = Period.months(n)
-  def years  = Period.years(n)
+  def days   = Period.days(self)
+  def weeks  = Period.weeks(self)
+  def months = Period.months(self)
+  def years  = Period.years(self)
 
   // See above.
-  def milli  = DurationBuilder(Period.millis(n))
-  def second = DurationBuilder(Period.seconds(n))
-  def minute = DurationBuilder(Period.minutes(n))
-  def hour   = DurationBuilder(Period.hours(n))
+  def milli  = DurationBuilder(Period.millis(self))
+  def second = DurationBuilder(Period.seconds(self))
+  def minute = DurationBuilder(Period.minutes(self))
+  def hour   = DurationBuilder(Period.hours(self))
 
   // See above.
-  def day   = Period.days(n)
-  def week  = Period.weeks(n)
-  def month = Period.months(n)
-  def year  = Period.years(n)
+  def day   = Period.days(self)
+  def week  = Period.weeks(self)
+  def month = Period.months(self)
+  def year  = Period.years(self)
 }

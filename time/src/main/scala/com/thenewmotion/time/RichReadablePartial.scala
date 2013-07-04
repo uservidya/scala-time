@@ -18,6 +18,6 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichReadablePartial(underlying: ReadablePartial) {
-  def chronology = underlying.getChronology
+class RichReadablePartial(val self: ReadablePartial) extends AnyVal {
+  def chronology = self.getChronology
 }

@@ -18,9 +18,7 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichChronology(underlying: Chronology) {
-  def zone: Option[DateTimeZone] =
-    nullCheck(underlying.getZone)
-  private def nullCheck[T <: AnyRef](x: T): Option[T] =
-    if (x == null) None else Some(x)
+class RichChronology(val self: Chronology) extends AnyVal {
+  def zone: Option[DateTimeZone] = nullCheck(self.getZone)
+  private def nullCheck[T <: AnyRef](x: T): Option[T] = if (x == null) None else Some(x)
 }

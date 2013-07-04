@@ -19,11 +19,10 @@ package com.thenewmotion.time
 import org.joda.time._
 import org.joda.time.base.AbstractPartial
 
-class RichAbstractPartial(underlying: AbstractPartial) extends Ordered[AbstractPartial] {
-  def fields = underlying.getFields
-  def fieldTypes = underlying.getFieldTypes
-  def values = underlying.getValues
+class RichAbstractPartial(val self: AbstractPartial) extends AnyVal with Ordered[AbstractPartial] {
+  def fields = self.getFields
+  def fieldTypes = self.getFieldTypes
+  def values = self.getValues
 
-  override def compare(that: AbstractPartial): Int =
-    underlying.compareTo(that)
+  override def compare(that: AbstractPartial): Int = self.compareTo(that)
 }

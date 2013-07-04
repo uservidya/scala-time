@@ -19,8 +19,7 @@ package com.thenewmotion.time
 import org.joda.time._
 
 private[time] object DurationBuilder {
-  def apply(underlying: Period): DurationBuilder =
-    new DurationBuilder(underlying)
+  def apply(underlying: Period): DurationBuilder = new DurationBuilder(underlying)
 }
 
 // Duration Builder
@@ -28,40 +27,24 @@ sealed private[time] class DurationBuilder(val underlying: Period) {
   // DurationBuilder + DurationBuilder = DurationBuilder
   // This is the only operation that can maintain a DurationBuilder
   // Everything else kicks us out to DateTime, Duration, or Period
-  def +(that: DurationBuilder): DurationBuilder =
-    DurationBuilder(this.underlying.plus(that.underlying))
+  def +(that: DurationBuilder): DurationBuilder = DurationBuilder(this.underlying.plus(that.underlying))
 
-  def ago: DateTime =
-    StaticDateTime.now.minus(underlying)
-  def later: DateTime =
-    StaticDateTime.now.plus(underlying)
-  def from(dt: DateTime): DateTime =
-    dt.plus(underlying)
-  def before(dt: DateTime): DateTime =
-    dt.minus(underlying)
+  def ago: DateTime = StaticDateTime.now.minus(underlying)
+  def later: DateTime = StaticDateTime.now.plus(underlying)
+  def from(dt: DateTime): DateTime = dt.plus(underlying)
+  def before(dt: DateTime): DateTime = dt.minus(underlying)
   
-  def standardDuration: Duration =
-    underlying.toStandardDuration  
-  def toDuration: Duration =
-    underlying.toStandardDuration  
-  def toPeriod: Period =
-    underlying
+  def standardDuration: Duration = underlying.toStandardDuration
+  def toDuration: Duration = underlying.toStandardDuration
+  def toPeriod: Period = underlying
     
-  def -(period: ReadablePeriod): Period =
-    underlying.minus(period)
-  def +(period: ReadablePeriod): Period =
-    underlying.plus(period)
+  def -(period: ReadablePeriod): Period = underlying.minus(period)
+  def +(period: ReadablePeriod): Period = underlying.plus(period)
 
-  def millis: Long =
-    underlying.toStandardDuration.getMillis
-  def seconds: Long =
-    underlying.toStandardDuration.getStandardSeconds
-  def -(amount: Long): Duration =
-    underlying.toStandardDuration.minus(amount)
-  def -(amount: ReadableDuration): Duration =
-    underlying.toStandardDuration.minus(amount)
-  def +(amount: Long): Duration =
-    underlying.toStandardDuration.plus(amount)
-  def +(amount: ReadableDuration): Duration =
-    underlying.toStandardDuration.plus(amount)
+  def millis: Long = underlying.toStandardDuration.getMillis
+  def seconds: Long = underlying.toStandardDuration.getStandardSeconds
+  def -(amount: Long): Duration = underlying.toStandardDuration.minus(amount)
+  def -(amount: ReadableDuration): Duration = underlying.toStandardDuration.minus(amount)
+  def +(amount: Long): Duration = underlying.toStandardDuration.plus(amount)
+  def +(amount: ReadableDuration): Duration = underlying.toStandardDuration.plus(amount)
 }

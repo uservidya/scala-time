@@ -18,122 +18,86 @@ package com.thenewmotion.time
  *
  **/
 
+import scala.language.implicitConversions
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.field.AbstractReadableInstantFieldProperty
-import java.util.Date
 import org.joda.time._
-import base.{BaseDateTime, AbstractDateTime, AbstractInstant, AbstractPartial}
+import org.joda.time.base.{BaseSingleFieldPeriod, AbstractDateTime, AbstractInstant, AbstractPartial}
+import java.sql.Timestamp
 
 object Implicits extends Implicits
-
 object BuilderImplicits extends Implicits
-
 object IntImplicits extends IntImplicits
-
 object JodaImplicits extends JodaImplicits
 
-object JavaImplicits extends JavaImplicits
-
-object SqlImplicits extends SqlImplicits
-
-trait Implicits extends BuilderImplicits with IntImplicits with JodaImplicits with JavaImplicits
-with SqlImplicits with TupleImplicits with XmlImplicits
+trait Implicits
+  extends BuilderImplicits
+  with IntImplicits
+  with JodaImplicits
+  with TupleImplicits
+  with XmlImplicits
+  with JavaImplicits
+  with OrderingImplicits
 
 trait BuilderImplicits {
-  implicit def forcePeriod(builder: DurationBuilder): Period =
-    builder.underlying
-
-  implicit def forceDuration(builder: DurationBuilder): Duration =
-    builder.underlying.toStandardDuration
+  implicit def forcePeriod(builder: DurationBuilder): Period = builder.underlying
+  implicit def forceDuration(builder: DurationBuilder): Duration = builder.underlying.toStandardDuration
 }
 
 trait IntImplicits {
-  implicit def RichInt(n: Int): RichInt = new com.thenewmotion.time.RichInt(n)
-
-  implicit def RichLong(n: Long): RichLong = new com.thenewmotion.time.RichLong(n)
-}
-
-trait JodaImplicits {
-  implicit def RichAbstractDateTime(dt: AbstractDateTime): RichAbstractDateTime = new RichAbstractDateTime(dt)
-
-  implicit def RichAbstractInstant(in: AbstractInstant): RichAbstractInstant = new RichAbstractInstant(in)
-
-  implicit def RichAbstractPartial(pt: AbstractPartial): RichAbstractPartial = new RichAbstractPartial(pt)
-
-  implicit def RichAbstractReadableInstantFieldProperty(pty: AbstractReadableInstantFieldProperty): RichAbstractReadableInstantFieldProperty =
-    new RichAbstractReadableInstantFieldProperty(pty)
-
-  implicit def RichChronology(ch: Chronology): RichChronology = new RichChronology(ch)
-
-  implicit def RichDateMidnight(dm: DateMidnight): RichDateMidnight = new RichDateMidnight(dm)
-
-  implicit def RichDateTime(dt: DateTime): RichDateTime = new RichDateTime(dt)
-
-  implicit def RichDateTimeFormatter(fmt: DateTimeFormatter): RichDateTimeFormatter = new RichDateTimeFormatter(fmt)
-
-  implicit def RichDateTimeProperty(pty: DateTime.Property): RichDateTimeProperty = new RichDateTimeProperty(pty)
-
-  implicit def RichDateTimeZone(zone: DateTimeZone): RichDateTimeZone = new RichDateTimeZone(zone)
-
-  implicit def RichDuration(dur: Duration): RichDuration = new RichDuration(dur)
-
-  implicit def RichInstant(in: Instant): RichInstant = new RichInstant(in)
-
-  implicit def RichLocalDate(ld: LocalDate): RichLocalDate = new RichLocalDate(ld)
-
-  implicit def RichLocalDateProperty(pty: LocalDate.Property): RichLocalDateProperty = new RichLocalDateProperty(pty)
-
-  implicit def RichLocalDateTime(dt: LocalDateTime): RichLocalDateTime = new RichLocalDateTime(dt)
-
-  implicit def RichLocalDateTimeProperty(pty: LocalDateTime.Property): RichLocalDateTimeProperty = new RichLocalDateTimeProperty(pty)
-
-  implicit def RichLocalTime(lt: LocalTime): RichLocalTime = new RichLocalTime(lt)
-
-  implicit def RichLocalTimeProperty(pty: LocalTime.Property): RichLocalTimeProperty = new RichLocalTimeProperty(pty)
-
-  implicit def RichPartial(pt: Partial): RichPartial = new RichPartial(pt)
-
-  implicit def RichPartialProperty(pty: Partial.Property): RichPartialProperty = new RichPartialProperty(pty)
-
-  implicit def RichPeriod(per: Period): RichPeriod = new RichPeriod(per)
-
-  implicit def RichReadableDateTime(dt: ReadableDateTime): RichReadableDateTime = new RichReadableDateTime(dt)
-
-  implicit def RichReadableDuration(dur: ReadableDuration): RichReadableDuration = new RichReadableDuration(dur)
-
-  implicit def RichReadableInstant(in: ReadableInstant): RichReadableInstant = new RichReadableInstant(in)
-
-  implicit def RichReadableInterval(in: ReadableInterval): RichReadableInterval = new RichReadableInterval(in)
-
-  implicit def RichReadablePartial(rp: ReadablePartial): RichReadablePartial = new RichReadablePartial(rp)
-
-  implicit def RichReadablePeriod(per: ReadablePeriod): RichReadablePeriod = new RichReadablePeriod(per)
-
-  implicit object DateTimeOrdering extends Ordering[DateTime] {
-    def compare(x: DateTime, y: DateTime) = x compare y
-  }
-
+  implicit def richInt(n: Int): RichInt = new com.thenewmotion.time.RichInt(n)
+  implicit def richLong(n: Long): RichLong = new com.thenewmotion.time.RichLong(n)
 }
 
 trait JavaImplicits {
-
-  implicit def date2DateTime(d: Date): DateTime =
-    if (d == null) null
-    else new DateTime(d)
-
-  implicit def dateTime2Date(dt: DateTime): Date = dt.toDate
+  implicit def richTimestamp(self: Timestamp): RichTimestamp = new RichTimestamp(self)
 }
 
-trait SqlImplicits {
-  import java.sql.Timestamp
+trait JodaImplicits {
+  implicit def richAbstractDateTime(dt: AbstractDateTime): RichAbstractDateTime = new RichAbstractDateTime(dt)
+  implicit def richAbstractInstant(in: AbstractInstant): RichAbstractInstant = new RichAbstractInstant(in)
+  implicit def richAbstractPartial(pt: AbstractPartial): RichAbstractPartial = new RichAbstractPartial(pt)
+  implicit def richAbstractReadableInstantFieldProperty(pty: AbstractReadableInstantFieldProperty): RichAbstractReadableInstantFieldProperty = new RichAbstractReadableInstantFieldProperty(pty)
+  implicit def richChronology(ch: Chronology): RichChronology = new RichChronology(ch)
+  implicit def richDateMidnight(dm: DateMidnight): RichDateMidnight = new RichDateMidnight(dm)
+  implicit def richDateTime(dt: DateTime): RichDateTime = new RichDateTime(dt)
+  implicit def richDateTimeFormatter(fmt: DateTimeFormatter): RichDateTimeFormatter = new RichDateTimeFormatter(fmt)
+  implicit def richDateTimeProperty(pty: DateTime.Property): RichDateTimeProperty = new RichDateTimeProperty(pty)
+  implicit def richDateTimeZone(zone: DateTimeZone): RichDateTimeZone = new RichDateTimeZone(zone)
+  implicit def richDuration(dur: Duration): RichDuration = new RichDuration(dur)
+  implicit def richInstant(in: Instant): RichInstant = new RichInstant(in)
+  implicit def richLocalDate(ld: LocalDate): RichLocalDate = new RichLocalDate(ld)
+  implicit def richLocalDateProperty(pty: LocalDate.Property): RichLocalDateProperty = new RichLocalDateProperty(pty)
+  implicit def richLocalDateTime(dt: LocalDateTime): RichLocalDateTime = new RichLocalDateTime(dt)
+  implicit def richLocalDateTimeProperty(pty: LocalDateTime.Property): RichLocalDateTimeProperty = new RichLocalDateTimeProperty(pty)
+  implicit def richLocalTime(lt: LocalTime): RichLocalTime = new RichLocalTime(lt)
+  implicit def richLocalTimeProperty(pty: LocalTime.Property): RichLocalTimeProperty = new RichLocalTimeProperty(pty)
+  implicit def richPartial(pt: Partial): RichPartial = new RichPartial(pt)
+  implicit def richPartialProperty(pty: Partial.Property): RichPartialProperty = new RichPartialProperty(pty)
+  implicit def richPeriod(per: Period): RichPeriod = new RichPeriod(per)
+  implicit def richReadableDateTime(dt: ReadableDateTime): RichReadableDateTime = new RichReadableDateTime(dt)
+  implicit def richReadableDuration(dur: ReadableDuration): RichReadableDuration = new RichReadableDuration(dur)
+  implicit def richReadableInstant(in: ReadableInstant): RichReadableInstant = new RichReadableInstant(in)
+  implicit def richReadableInterval(in: ReadableInterval): RichReadableInterval = new RichReadableInterval(in)
+  implicit def richReadablePartial(rp: ReadablePartial): RichReadablePartial = new RichReadablePartial(rp)
+  implicit def richReadablePeriod(per: ReadablePeriod): RichReadablePeriod = new RichReadablePeriod(per)
+}
 
-  implicit def dateTime2Timestamp(d: BaseDateTime): Timestamp = new Timestamp(d.toDate.getTime)
+trait OrderingImplicits extends LowPriorityOrderingImplicits {
+  implicit val DateTimeOrdering = ReadableInstantOrdering[DateTime]
+  implicit val DateMidnightOrdering = ReadableInstantOrdering[DateMidnight]
+  implicit val LocalDateOrdering = ReadablePartialOrdering[LocalDate]
+  implicit val LocalTimeOrdering = ReadablePartialOrdering[LocalTime]
+  implicit val LocalDateTimeOrdering = ReadablePartialOrdering[LocalDateTime]
+  implicit val DurationOrdering = ReadableDurationOrdering[Duration]
+}
 
-  implicit def timestamp2dateTime(t: Timestamp): DateTime = new DateTime(t)
-
-  implicit def with2Timestamp(d: BaseDateTime) = new {
-    def toTimestamp: Timestamp = dateTime2Timestamp(d)
-  }
+trait LowPriorityOrderingImplicits {
+  implicit def ReadableInstantOrdering[A <: ReadableInstant] = order[A, ReadableInstant]
+  implicit def ReadablePartialOrdering[A <: ReadablePartial] = order[A, ReadablePartial]
+  implicit def BaseSingleFieldPeriodOrdering[A <: BaseSingleFieldPeriod] = order[A, BaseSingleFieldPeriod]
+  implicit def ReadableDurationOrdering[A <: ReadableDuration] = order[A, ReadableDuration]
+  private def order[A, B <: Comparable[B]](implicit ev: A <:< B): Ordering[A] = Ordering.by[A, B](ev)
 }
 
 trait XmlImplicits {
@@ -141,11 +105,9 @@ trait XmlImplicits {
 
   lazy val factory = DatatypeFactory.newInstance
 
-  implicit def dateTime2XmlGregCalendar(dt: DateTime) =
-    factory.newXMLGregorianCalendar(dt.toGregorianCalendar)
+  implicit def dateTime2XmlGregCalendar(dt: DateTime) = factory.newXMLGregorianCalendar(dt.toGregorianCalendar)
 
-  implicit def xmlGregCalendar2DateTime(calendar: XMLGregorianCalendar) =
-    new DateTime(calendar.toGregorianCalendar.getTimeInMillis)
+  implicit def xmlGregCalendar2DateTime(calendar: XMLGregorianCalendar) = new DateTime(calendar.toGregorianCalendar.getTimeInMillis)
 }
 
 trait TupleImplicits {

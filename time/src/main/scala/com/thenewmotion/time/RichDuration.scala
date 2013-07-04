@@ -18,15 +18,10 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichDuration(underlying: Duration) {
-  def seconds: Long =
-    underlying.getStandardSeconds
-  def -(amount: Long): Duration =
-    underlying.minus(amount)
-  def -(amount: ReadableDuration): Duration =
-    underlying.minus(amount)
-  def +(amount: Long): Duration =
-    underlying.plus(amount)
-  def +(amount: ReadableDuration): Duration =
-    underlying.plus(amount)
+class RichDuration(val self: Duration) extends AnyVal {
+  def seconds: Long = self.getStandardSeconds
+  def -(amount: Long): Duration = self.minus(amount)
+  def -(amount: ReadableDuration): Duration = self.minus(amount)
+  def +(amount: Long): Duration = self.plus(amount)
+  def +(amount: ReadableDuration): Duration = self.plus(amount)
 }

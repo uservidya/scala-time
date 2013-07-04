@@ -18,21 +18,17 @@ package com.thenewmotion.time
  **/
 import org.joda.time._
 
-class RichLocalTime(underlying: LocalTime) {
-  def -(period: ReadablePeriod): LocalTime =
-    underlying.minus(period)
-  def -(builder: DurationBuilder): LocalTime =
-    underlying.minus(builder.underlying)
-  def +(period: ReadablePeriod): LocalTime =
-    underlying.plus(period)
-  def +(builder: DurationBuilder): LocalTime =
-    underlying.plus(builder.underlying)
+class RichLocalTime(val self: LocalTime) extends AnyVal {
+  def -(period: ReadablePeriod): LocalTime = self.minus(period)
+  def -(builder: DurationBuilder): LocalTime = self.minus(builder.underlying)
+  def +(period: ReadablePeriod): LocalTime = self.plus(period)
+  def +(builder: DurationBuilder): LocalTime = self.plus(builder.underlying)
 
-  def second: LocalTime.Property = underlying.secondOfMinute
-  def minute: LocalTime.Property = underlying.minuteOfHour
-  def hour: LocalTime.Property = underlying.hourOfDay
+  def second: LocalTime.Property = self.secondOfMinute
+  def minute: LocalTime.Property = self.minuteOfHour
+  def hour: LocalTime.Property = self.hourOfDay
 
-  def withSecond(second: Int) = underlying.withSecondOfMinute(second)
-  def withMinute(minute: Int) = underlying.withMinuteOfHour(minute)
-  def withHour(hour: Int) = underlying.withHourOfDay(hour)
+  def withSecond(second: Int) = self.withSecondOfMinute(second)
+  def withMinute(minute: Int) = self.withMinuteOfHour(minute)
+  def withHour(hour: Int) = self.withHourOfDay(hour)
 }
