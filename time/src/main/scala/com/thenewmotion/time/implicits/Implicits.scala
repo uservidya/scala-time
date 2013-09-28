@@ -33,7 +33,7 @@ import com.thenewmotion.time.factory.DurationBuilder
 object All extends All
 trait All extends Implicits
 
-@deprecated("use com.thenewmotion.time.implicits.All", "2.3")
+@deprecated("use com.thenewmotion.time.implicits.All", "3.0")
 object Implicits extends Implicits
 
 object BuilderImplicits extends BuilderImplicits

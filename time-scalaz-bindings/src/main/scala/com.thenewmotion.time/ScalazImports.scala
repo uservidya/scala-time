@@ -6,7 +6,7 @@ import com.thenewmotion.time.extension.RichPeriod
 
 object typeinstance extends Instances
 
-@deprecated("Use com.thenewmotion.time.typeinstance._ instead", "2.3")
+@deprecated("Use com.thenewmotion.time.typeinstance._ instead", "3.0")
 object ScalazImports extends Instances
 
 trait Instances {

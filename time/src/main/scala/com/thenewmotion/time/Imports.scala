@@ -17,6 +17,7 @@
  **/
 package com.thenewmotion.time
 
+@deprecated("Use com.thenewmotion.time._ instead", "3.0")
 object Imports extends Imports
 object TypeImports extends TypeImports
 object StaticForwarderImports extends StaticForwarderImports
