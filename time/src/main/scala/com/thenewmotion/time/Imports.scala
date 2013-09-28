@@ -40,14 +40,15 @@ trait TypeImports {
 }
 
 trait StaticForwarderImports {
-  val DateTime       = com.thenewmotion.time.StaticDateTime
-  val DateTimeFormat = com.thenewmotion.time.StaticDateTimeFormat
-  val DateTimeZone   = com.thenewmotion.time.StaticDateTimeZone
-  val Duration       = com.thenewmotion.time.StaticDuration
-  val Interval       = com.thenewmotion.time.StaticInterval
-  val LocalDate      = com.thenewmotion.time.StaticLocalDate
-  val LocalDateTime  = com.thenewmotion.time.StaticLocalDateTime
-  val LocalTime      = com.thenewmotion.time.StaticLocalTime
-  val Period         = com.thenewmotion.time.StaticPeriod
-  val Partial        = com.thenewmotion.time.StaticPartial
+  val DateTime          = com.thenewmotion.time.StaticDateTime
+  val DateTimeFormat    = com.thenewmotion.time.StaticDateTimeFormat
+  val ISODateTimeFormat = com.thenewmotion.time.StaticISODateTimeFormat
+  val DateTimeZone      = com.thenewmotion.time.StaticDateTimeZone
+  val Duration          = com.thenewmotion.time.StaticDuration
+  val Interval          = com.thenewmotion.time.StaticInterval
+  val LocalDate         = com.thenewmotion.time.StaticLocalDate
+  val LocalDateTime     = com.thenewmotion.time.StaticLocalDateTime
+  val LocalTime         = com.thenewmotion.time.StaticLocalTime
+  val Period            = com.thenewmotion.time.StaticPeriod
+  val Partial           = com.thenewmotion.time.StaticPartial
 }
