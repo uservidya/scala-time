@@ -46,4 +46,8 @@ trait StaticDateTime {
   def lastYear   = now - 1.year
 
   def parse(s: String, fmt: DateTimeFormatter) = DateTime.parse(s, fmt)
+
+  def fromJsonString(x: String) = parse(x, StaticDateTimeFormat.jsonFormat)
+    .withZoneRetainFields(DateTimeZone.UTC)
+    .withZone(DateTimeZone.getDefault)
 }

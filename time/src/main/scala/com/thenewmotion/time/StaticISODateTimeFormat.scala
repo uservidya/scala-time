@@ -1,6 +1,5 @@
 package com.thenewmotion.time
 
-import java.util.Locale
 import org.joda.time.format.{ISODateTimeFormat => fmt, DateTimeFormatter}
 
 object StaticISODateTimeFormat extends StaticISODateTimeFormat

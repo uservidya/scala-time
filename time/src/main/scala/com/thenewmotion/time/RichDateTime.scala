@@ -74,6 +74,8 @@ class RichDateTime(val self: DateTime) extends AnyVal {
 
   def compare(that: RichDateTime) = self.compareTo(that.self)
 
+  def toJsonString: String = self.toString(StaticDateTimeFormat.jsonFormat.withZone(DateTimeZone.UTC))
+
   def monthInterval: Interval = {
     val start = withDay(1).toDateMidnight
     new Interval(start, start.plusMonths(1))
