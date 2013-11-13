@@ -47,7 +47,6 @@ trait StaticDateTime {
 
   def parse(s: String, fmt: DateTimeFormatter) = DateTime.parse(s, fmt)
 
-  def fromJsonString(x: String): DateTime = StaticDateTimeFormat.jsonFormat.parseDateTime(x)
-    .withZoneRetainFields(DateTimeZone.UTC)
-    .withZone(DateTimeZone.getDefault)
+  @deprecated("2.4", "use `new DateTime(..)`")
+  def fromJsonString(x: String): DateTime = new DateTime(x)
 }

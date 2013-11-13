@@ -23,6 +23,7 @@ import org.joda.time.format._
 object StaticDateTimeFormat extends StaticDateTimeFormat
 
 trait StaticDateTimeFormat {
+  @deprecated("2.4", "use StaticISODateTimeFormat")
   val jsonFormat: DateTimeFormatter = forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
 
   def forPattern(pattern: String): DateTimeFormatter = DateTimeFormat.forPattern(pattern)
